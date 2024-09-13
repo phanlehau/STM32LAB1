@@ -19,7 +19,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-//TODO EX 1
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -92,7 +91,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    // TODO EX1
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
