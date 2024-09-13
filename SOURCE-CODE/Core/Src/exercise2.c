@@ -22,8 +22,8 @@ void exercise2_run(){
   	  if(couter>=5)
   	  {
   		HAL_GPIO_TogglePin ( RED_LED_GPIO_Port , RED_LED_Pin ) ;
-  		HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
-  		status = 1;
+  		HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
+  		status = 2;
   		couter = 0;
   	  }
   	  break;
@@ -32,8 +32,8 @@ void exercise2_run(){
   	  if(couter>=2)
   	  {
     		HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
-    		HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
-    		status = 2;
+    		HAL_GPIO_TogglePin ( RED_LED_GPIO_Port , RED_LED_Pin ) ;
+    		status = 0;
     		couter = 0;
   	  }
     case 2:
@@ -41,8 +41,8 @@ void exercise2_run(){
   	  if(couter>=3)
   	  {
   		  HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
-  		  HAL_GPIO_TogglePin ( RED_LED_GPIO_Port , RED_LED_Pin )  ;
-    		status = 0;
+  		HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
+    		status = 1;
     		couter = 0;
   	  }
   	  break;
