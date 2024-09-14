@@ -1,0 +1,3 @@
+exercise7.c:11:6:init_exercise7	4	static
+exercise7.c:14:6:clearAllClock	8	static
+exercise7.c:29:6:exercise7_run	4	static
