@@ -1,0 +1,4 @@
+exercise5.c:18:6:init_exercise5	8	static
+exercise5.c:23:6:display7SEG1	16	static
+exercise5.c:78:6:display7SEG2	16	static
+exercise5.c:133:6:exercise5_run	8	static
