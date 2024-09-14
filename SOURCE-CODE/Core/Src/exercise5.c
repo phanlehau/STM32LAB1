@@ -1,9 +1,3 @@
-/*
- * exercise1.c
- *
- *  Created on: Aug 31, 2024
- *      Author: KAI
- */
 #include "exercise5.h"
 
   int couter = 0;
@@ -22,6 +16,13 @@ void init_exercise5(){
 }
 void display7SEG1(int number)
 {
+	HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
 	if(number == 0)
 	{
 		HAL_GPIO_TogglePin ( LED_7_GPIO_Port , LED_7_Pin ) ;
@@ -77,6 +78,13 @@ void display7SEG1(int number)
 }
 void display7SEG2(int number)
 {
+	HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_22_GPIO_Port, LED_22_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_33_GPIO_Port, LED_33_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_44_GPIO_Port, LED_44_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_55_GPIO_Port, LED_55_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_66_GPIO_Port, LED_66_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_77_GPIO_Port, LED_77_Pin, GPIO_PIN_RESET);
 	if(number == 0)
 	{
 		HAL_GPIO_TogglePin ( LED_77_GPIO_Port , LED_77_Pin ) ;
@@ -131,6 +139,7 @@ void display7SEG2(int number)
 
 }
 void exercise5_run(){
+	// hien thi diem nguoc 2 led 7 doan
 	 if(status == 0)
 		  {
 			  bienphu1 = 5;
@@ -155,27 +164,9 @@ void exercise5_run(){
 		  {
 			  bienphu2 = 3;
 		  }
-			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
 	      display7SEG1 ( bienphu1 - couter - 1) ;
-			HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_22_GPIO_Port, LED_22_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_33_GPIO_Port, LED_33_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_44_GPIO_Port, LED_44_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_55_GPIO_Port, LED_55_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_66_GPIO_Port, LED_66_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_77_GPIO_Port, LED_77_Pin, GPIO_PIN_RESET);
 	      display7SEG2 ( bienphu2 - couter2 - 1) ;
-		  if(check == 0)
-		  {
-			  HAL_Delay (1000) ;
-			  check = 1;
-		  }
+	// hien thi 2 den giao thong
 	      switch(status) {
 	      case 0:
 	    	  couter++;
