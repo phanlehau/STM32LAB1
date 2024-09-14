@@ -1,9 +1,3 @@
-/*
- * exercise1.c
- *
- *  Created on: Aug 31, 2024
- *      Author: KAI
- */
 #include "exercise1.h"
 
 int led_status = LED_OFF;
