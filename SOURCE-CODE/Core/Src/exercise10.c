@@ -1,9 +1,3 @@
-/*
- * exercise1.c
- *
- *  Created on: Aug 31, 2024
- *      Author: KAI
- */
 #include "exercise10.h"
 
  int s = 0;
