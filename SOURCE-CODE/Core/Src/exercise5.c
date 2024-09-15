@@ -12,6 +12,10 @@
 void init_exercise5(){
 	  HAL_GPIO_TogglePin ( RED_LED1_GPIO_Port , RED_LED1_Pin ) ;
 	  HAL_GPIO_TogglePin ( GREEN_LED2_GPIO_Port , GREEN_LED2_Pin ) ;
+	  display7SEG1 (4) ;
+	  display7SEG2 (2) ;
+	  HAL_Delay(1000);
+
 
 }
 void display7SEG1(int number)
@@ -140,32 +144,6 @@ void display7SEG2(int number)
 }
 void exercise5_run(){
 	// hien thi diem nguoc 2 led 7 doan
-	 if(status == 0)
-		  {
-			  bienphu1 = 5;
-		  }
-		  else if(status == 1)
-		  {
-			  bienphu1 = 2;
-		  }
-		  else if(status == 2)
-		  {
-			  bienphu1 = 3;
-		  }
-		  if(status2 == 0)
-		  {
-			  bienphu2 = 5;
-		  }
-		  else if(status2 == 1)
-		  {
-			  bienphu2 = 2;
-		  }
-		  else if(status2 == 2)
-		  {
-			  bienphu2 = 3;
-		  }
-	      display7SEG1 ( bienphu1 - couter - 1) ;
-	      display7SEG2 ( bienphu2 - couter2 - 1) ;
 	// hien thi 2 den giao thong
 	      switch(status) {
 	      case 0:
@@ -235,6 +213,32 @@ void exercise5_run(){
 	           default:
 	         	  break;
 	           }
+	 	 if(status == 0)
+	 		  {
+	 			  bienphu1 = 5;
+	 		  }
+	 		  else if(status == 1)
+	 		  {
+	 			  bienphu1 = 2;
+	 		  }
+	 		  else if(status == 2)
+	 		  {
+	 			  bienphu1 = 3;
+	 		  }
+	 		  if(status2 == 0)
+	 		  {
+	 			  bienphu2 = 5;
+	 		  }
+	 		  else if(status2 == 1)
+	 		  {
+	 			  bienphu2 = 2;
+	 		  }
+	 		  else if(status2 == 2)
+	 		  {
+	 			  bienphu2 = 3;
+	 		  }
+	 	      display7SEG1 ( bienphu1 - couter - 1) ;
+	 	      display7SEG2 ( bienphu2 - couter2 - 1) ;
 
 }
 
