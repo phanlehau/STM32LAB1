@@ -18,129 +18,45 @@ void init_exercise5(){
 
 
 }
-void display7SEG1(int number)
-{
-	HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, GPIO_PIN_RESET);
-	if(number == 0)
-	{
-		HAL_GPIO_TogglePin ( LED_7_GPIO_Port , LED_7_Pin ) ;
-	}
-	if(number == 1)
-	{
-		HAL_GPIO_TogglePin ( LED_1_GPIO_Port , LED_1_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_4_GPIO_Port , LED_4_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_6_GPIO_Port , LED_6_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_7_GPIO_Port , LED_7_Pin ) ;
-	}
-	if(number == 2)
-	{
-		HAL_GPIO_TogglePin ( LED_3_GPIO_Port , LED_3_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_6_GPIO_Port , LED_6_Pin ) ;
-	}
-	if(number == 3)
-	{
-		HAL_GPIO_TogglePin ( LED_6_GPIO_Port , LED_6_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-	}
-	if(number == 4)
-	{
-		HAL_GPIO_TogglePin ( LED_1_GPIO_Port , LED_1_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_4_GPIO_Port , LED_4_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-	}
-	if(number == 5)
-	{
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_2_GPIO_Port , LED_2_Pin ) ;
-	}
-	if(number == 6)
-	{
-		HAL_GPIO_TogglePin ( LED_2_GPIO_Port , LED_2_Pin ) ;
-	}
-	if(number == 7)
-	{
-		HAL_GPIO_TogglePin ( LED_4_GPIO_Port , LED_4_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_6_GPIO_Port , LED_6_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_7_GPIO_Port , LED_7_Pin ) ;
-	}
-	if(number == 8)
-	{
-	}
-	if(number == 9)
-	{
-		HAL_GPIO_TogglePin ( LED_5_GPIO_Port , LED_5_Pin ) ;
-	}
+// Bảng tra cứu cho LED 7 đoạn (số từ 0 đến 9)
+const uint8_t seven_seg_digits[] = {
+  0b00111111, // Số 0
+  0b00000110, // Số 1
+  0b01011011, // Số 2
+  0b01001111, // Số 3
+  0b01100110, // Số 4
+  0b01101101, // Số 5
+  0b01111101, // Số 6
+  0b00000111, // Số 7
+  0b01111111, // Số 8
+  0b01101111  // Số 9
+};
+void display7SEG1(int number) {
+  if(number < 0 || number > 9) return; // Kiểm tra số hợp lệ
 
+  uint8_t digit = seven_seg_digits[number]; // Lấy trạng thái từ bảng tra cứu
+
+  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, (digit & 0x01) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, (digit & 0x02) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, (digit & 0x04) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, (digit & 0x08) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, (digit & 0x10) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, (digit & 0x20) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, (digit & 0x40) ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
-void display7SEG2(int number)
-{
-	HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_22_GPIO_Port, LED_22_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_33_GPIO_Port, LED_33_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_44_GPIO_Port, LED_44_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_55_GPIO_Port, LED_55_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_66_GPIO_Port, LED_66_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(LED_77_GPIO_Port, LED_77_Pin, GPIO_PIN_RESET);
-	if(number == 0)
-	{
-		HAL_GPIO_TogglePin ( LED_77_GPIO_Port , LED_77_Pin ) ;
-	}
-	if(number == 1)
-	{
-		HAL_GPIO_TogglePin ( LED_11_GPIO_Port , LED_11_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_44_GPIO_Port , LED_44_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_66_GPIO_Port , LED_66_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_77_GPIO_Port , LED_77_Pin ) ;
-	}
-	if(number == 2)
-	{
-		HAL_GPIO_TogglePin ( LED_33_GPIO_Port , LED_33_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_66_GPIO_Port , LED_66_Pin ) ;
-	}
-	if(number == 3)
-	{
-		HAL_GPIO_TogglePin ( LED_66_GPIO_Port , LED_66_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-	}
-	if(number == 4)
-	{
-		HAL_GPIO_TogglePin ( LED_11_GPIO_Port , LED_11_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_44_GPIO_Port , LED_44_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-	}
-	if(number == 5)
-	{
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_22_GPIO_Port , LED_22_Pin ) ;
-	}
-	if(number == 6)
-	{
-		HAL_GPIO_TogglePin ( LED_22_GPIO_Port , LED_22_Pin ) ;
-	}
-	if(number == 7)
-	{
-		HAL_GPIO_TogglePin ( LED_44_GPIO_Port , LED_44_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_66_GPIO_Port , LED_66_Pin ) ;
-		HAL_GPIO_TogglePin ( LED_77_GPIO_Port , LED_77_Pin ) ;
-	}
-	if(number == 8)
-	{
-	}
-	if(number == 9)
-	{
-		HAL_GPIO_TogglePin ( LED_55_GPIO_Port , LED_55_Pin ) ;
-	}
 
+void display7SEG2(int number) {
+  if(number < 0 || number > 9) return; // Kiểm tra số hợp lệ
+
+  uint8_t digit = seven_seg_digits[number]; // Lấy trạng thái từ bảng tra cứu
+
+  HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, (digit & 0x01) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_22_GPIO_Port, LED_22_Pin, (digit & 0x02) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_33_GPIO_Port, LED_33_Pin, (digit & 0x04) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_44_GPIO_Port, LED_44_Pin, (digit & 0x08) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_55_GPIO_Port, LED_55_Pin, (digit & 0x10) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_66_GPIO_Port, LED_66_Pin, (digit & 0x20) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LED_77_GPIO_Port, LED_77_Pin, (digit & 0x40) ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 void exercise5_run(){
 	// hien thi diem nguoc 2 led 7 doan
