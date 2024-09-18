@@ -6,21 +6,21 @@ void init_exercise4(){
 
 }
 const uint8_t seven_seg_digits[] = {
-  0b00111111, // Số 0
-  0b00000110, // Số 1
-  0b01011011, // Số 2
-  0b01001111, // Số 3
-  0b01100110, // Số 4
-  0b01101101, // Số 5
-  0b01111101, // Số 6
-  0b00000111, // Số 7
-  0b01111111, // Số 8
-  0b01101111  // Số 9
+  0b00111111, // So 0
+  0b00000110, // So 1
+  0b01011011, // So 2
+  0b01001111, // So 3
+  0b01100110, // So 4
+  0b01101101, // So 5
+  0b01111101, // So 6
+  0b00000111, // So 7
+  0b01111111, // So 8
+  0b01101111  // So 9
 };
 void display7SEG(int number) {
-  if(number < 0 || number > 9) return; // Kiểm tra số hợp lệ
+  if(number < 0 || number > 9) return; // Kiem tra so hop le
 
-  uint8_t digit = seven_seg_digits[number]; // Lấy trạng thái từ bảng tra cứu
+  uint8_t digit = seven_seg_digits[number]; // Lay trang thai tu bang tra cuu
 
   HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, (digit & 0x01) ? GPIO_PIN_RESET : GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, (digit & 0x02) ? GPIO_PIN_RESET : GPIO_PIN_SET);
