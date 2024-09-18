@@ -1,48 +1,48 @@
-/*
- * exercise2.c
- *
- *  Created on: Aug 31, 2024
- *      Author: KAI
- */
 #include "exercise2.h"
 
   int couter = 0;
   int status = 0;
 
+  int led_status = DO;
 
 void init_exercise2(){
-	  HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
-	  HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
+	    HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_SET);
 
 }
 void exercise2_run(){
     switch(status) {
-    case 0:
+    case DO:
   	  couter++;
   	  if(couter>=5)
   	  {
-  		HAL_GPIO_TogglePin ( RED_LED_GPIO_Port , RED_LED_Pin ) ;
-  		HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
-  		status = 2;
+  	    HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_SET);
+  		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_SET);
+  		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_RESET);
+  		status = XANH;
   		couter = 0;
   	  }
   	  break;
-    case 1:
+    case VANG:
   	  couter++;
   	  if(couter>=2)
   	  {
-    		HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
-    		HAL_GPIO_TogglePin ( RED_LED_GPIO_Port , RED_LED_Pin ) ;
-    		status = 0;
+  	    HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_RESET);
+  		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_SET);
+  		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_SET);
+
+    		status = DO;
     		couter = 0;
   	  }
-    case 2:
+    case XANH:
   	  couter++;
   	  if(couter>=3)
   	  {
-  		  HAL_GPIO_TogglePin ( GREEN_LED_GPIO_Port , GREEN_LED_Pin ) ;
-  		HAL_GPIO_TogglePin ( YELLOW_LED_GPIO_Port , YELLOW_LED_Pin ) ;
-    		status = 1;
+  	    HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_SET);
+  		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_RESET);
+  		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_SET);
+    		status = VANG;
     		couter = 0;
   	  }
   	  break;
