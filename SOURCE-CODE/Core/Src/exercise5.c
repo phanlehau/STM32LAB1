@@ -1,17 +1,17 @@
 #include "exercise5.h"
 
   int couter = 0;
-  int status = 0;
   int couter2 = 0;
   int status2 = 2;
   int check = 0;
   int bienphu1 = 0;
   int bienphu2 = 0;
+  int status = DO;
 
 
 void init_exercise5(){
-	  HAL_GPIO_TogglePin ( RED_LED1_GPIO_Port , RED_LED1_Pin ) ;
-	  HAL_GPIO_TogglePin ( GREEN_LED2_GPIO_Port , GREEN_LED2_Pin ) ;
+	HAL_GPIO_WritePin(RED_LED1_GPIO_Port, RED_LED1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_LED2_GPIO_Port, GREEN_LED2_Pin, GPIO_PIN_SET);
 	  display7SEG1 (4) ;
 	  display7SEG2 (2) ;
 	  HAL_Delay(1000);
@@ -59,35 +59,37 @@ void display7SEG2(int number) {
   HAL_GPIO_WritePin(LED_77_GPIO_Port, LED_77_Pin, (digit & 0x40) ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 void exercise5_run(){
-	// hien thi diem nguoc 2 led 7 doan
 	// hien thi 2 den giao thong
 	      switch(status) {
-	      case 0:
+	      case DO:
 	    	  couter++;
 	    	  if(couter>=5)
 	    	  {
-	    		HAL_GPIO_TogglePin ( RED_LED1_GPIO_Port , RED_LED1_Pin ) ;
-	    		HAL_GPIO_TogglePin ( GREEN_LED1_GPIO_Port , GREEN_LED1_Pin ) ;
+	    			HAL_GPIO_WritePin(RED_LED1_GPIO_Port, RED_LED1_Pin, GPIO_PIN_RESET);
+	    			HAL_GPIO_WritePin(GREEN_LED1_GPIO_Port, GREEN_LED1_Pin, GPIO_PIN_SET);
+	    			HAL_GPIO_WritePin(YELLOW_LED1_GPIO_Port, YELLOW_LED1_Pin, GPIO_PIN_RESET);
 	    		status = 2;
 	    		couter = 0;
 	    	  }
 	    	  break;
-	      case 1:
+	      case VANG:
 	    	  couter++;
 	    	  if(couter>=2)
 	    	  {
-	      		HAL_GPIO_TogglePin ( YELLOW_LED1_GPIO_Port , YELLOW_LED1_Pin ) ;
-	      		HAL_GPIO_TogglePin ( RED_LED1_GPIO_Port , RED_LED1_Pin ) ;
+	    			HAL_GPIO_WritePin(RED_LED1_GPIO_Port, RED_LED1_Pin, GPIO_PIN_SET);
+	    			HAL_GPIO_WritePin(GREEN_LED1_GPIO_Port, GREEN_LED1_Pin, GPIO_PIN_RESET);
+	    			HAL_GPIO_WritePin(YELLOW_LED1_GPIO_Port, YELLOW_LED1_Pin, GPIO_PIN_RESET);
 	      		status = 0;
 	      		couter = 0;
 	    	  }
 	    	  break;
-	      case 2:
+	      case XANH:
 	    	  couter++;
 	    	  if(couter>=3)
 	    	  {
-	    		  HAL_GPIO_TogglePin ( GREEN_LED1_GPIO_Port , GREEN_LED1_Pin ) ;
-	    		  HAL_GPIO_TogglePin ( YELLOW_LED1_GPIO_Port , YELLOW_LED1_Pin )  ;
+	    			HAL_GPIO_WritePin(RED_LED1_GPIO_Port, RED_LED1_Pin, GPIO_PIN_RESET);
+	    			HAL_GPIO_WritePin(GREEN_LED1_GPIO_Port, GREEN_LED1_Pin, GPIO_PIN_RESET);
+	    			HAL_GPIO_WritePin(YELLOW_LED1_GPIO_Port, YELLOW_LED1_Pin, GPIO_PIN_SET);
 	      		status = 1;
 	      		couter = 0;
 	    	  }
@@ -96,32 +98,35 @@ void exercise5_run(){
 	    	  break;
 	      }
 	      switch(status2) {
-	           case 0:
+	           case DO:
 	         	  couter2++;
 	         	  if(couter2>=5)
 	         	  {
-	          		HAL_GPIO_TogglePin ( RED_LED2_GPIO_Port , RED_LED2_Pin ) ;
-	          		HAL_GPIO_TogglePin ( GREEN_LED2_GPIO_Port , GREEN_LED2_Pin ) ;
+		    			HAL_GPIO_WritePin(RED_LED2_GPIO_Port, RED_LED2_Pin, GPIO_PIN_RESET);
+		    			HAL_GPIO_WritePin(GREEN_LED2_GPIO_Port, GREEN_LED2_Pin, GPIO_PIN_SET);
+		    			HAL_GPIO_WritePin(YELLOW_LED2_GPIO_Port, YELLOW_LED2_Pin, GPIO_PIN_RESET);
 	         		status2 = 2;
 	         		couter2 = 0;
 	         	  }
 	         	  break;
-	           case 1:
+	           case VANG:
 	         	  couter2++;
 	         	  if(couter2>=2)
 	         	  {
-	            		HAL_GPIO_TogglePin ( YELLOW_LED2_GPIO_Port , YELLOW_LED2_Pin ) ;
-	            		HAL_GPIO_TogglePin ( RED_LED2_GPIO_Port , RED_LED2_Pin ) ;
+		    			HAL_GPIO_WritePin(RED_LED2_GPIO_Port, RED_LED2_Pin, GPIO_PIN_SET);
+		    			HAL_GPIO_WritePin(GREEN_LED2_GPIO_Port, GREEN_LED2_Pin, GPIO_PIN_RESET);
+		    			HAL_GPIO_WritePin(YELLOW_LED2_GPIO_Port, YELLOW_LED2_Pin, GPIO_PIN_RESET);
 	           		status2 = 0;
 	           		couter2 = 0;
 	         	  }
 	         	  break;
-	           case 2:
+	           case XANH:
 	         	  couter2++;
 	         	  if(couter2>=3)
 	         	  {
-	        		  HAL_GPIO_TogglePin ( GREEN_LED2_GPIO_Port , GREEN_LED2_Pin ) ;
-	        		  HAL_GPIO_TogglePin ( YELLOW_LED2_GPIO_Port , YELLOW_LED2_Pin )  ;
+		    			HAL_GPIO_WritePin(RED_LED2_GPIO_Port, RED_LED2_Pin, GPIO_PIN_RESET);
+		    			HAL_GPIO_WritePin(GREEN_LED2_GPIO_Port, GREEN_LED2_Pin, GPIO_PIN_RESET);
+		    			HAL_GPIO_WritePin(YELLOW_LED2_GPIO_Port, YELLOW_LED2_Pin, GPIO_PIN_SET);
 	           		status2 = 1;
 	           		couter2 = 0;
 	         	  }
@@ -129,6 +134,7 @@ void exercise5_run(){
 	           default:
 	         	  break;
 	           }
+	  	// hien thi diem nguoc 2 led 7 doan
 	 	 if(status == 0)
 	 		  {
 	 			  bienphu1 = 5;
