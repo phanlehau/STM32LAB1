@@ -352,7 +352,6 @@ void display7SEG2(int number) {
 void exercise5_run(){
  800035c:	b580      	push	{r7, lr}
  800035e:	af00      	add	r7, sp, #0
-	// hien thi diem nguoc 2 led 7 doan
 	// hien thi 2 den giao thong
 	      switch(status) {
  8000360:	4b8f      	ldr	r3, [pc, #572]	; (80005a0 <exercise5_run+0x244>)
@@ -630,6 +629,7 @@ void exercise5_run(){
 	         	  break;
  800051a:	bf00      	nop
 	           }
+	  	// hien thi diem nguoc 2 led 7 doan
 	 	 if(status == 0)
  800051c:	4b20      	ldr	r3, [pc, #128]	; (80005a0 <exercise5_run+0x244>)
  800051e:	681b      	ldr	r3, [r3, #0]
