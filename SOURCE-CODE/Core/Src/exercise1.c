@@ -1,28 +1,29 @@
 #include "exercise1.h"
 
-int led_status = LED_OFF;
+int timer_counter[3];
+int timer_flag[3];
+int TIMER_CYCLE = 10;
+
+void setTimer (int number ,int duration ) {
+timer_counter[number] = duration / TIMER_CYCLE ;
+timer_flag[number] = 0;
+}
+void timer_run () {
+for(int i = 0;i<=2;i++)
+{
+if( timer_counter[i] > 0) {
+timer_counter[i]--;
+if( timer_counter[i] == 0) timer_flag[i] = 1;
+}
+}
+}
 
 void init_exercise1(){
+	  setTimer(0,10) ;
+	  setTimer(1,10) ;
+	  setTimer(2,10) ;
 }
+
 void exercise1_run(){
-	switch(led_status){
-		case LED_ON:
-			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
-			if(1){
-				led_status = LED_OFF;
-			}
-			break;
-		case LED_OFF:
-			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
-			if(1){
-				led_status = LED_ON;
-			}
-			break;
-		default:
-			break;
-	}
+
 }
-
-

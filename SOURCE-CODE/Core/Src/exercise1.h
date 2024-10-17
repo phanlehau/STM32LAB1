@@ -4,9 +4,8 @@
 #include "main.h"
 
 
-#define LED_ON 	1
-#define LED_OFF	0
-
+void setTimer (int number ,int duration );
+void timer_run ();
 void init_exercise1();
 void exercise1_run();
 
