@@ -6,16 +6,16 @@ void init_exercise4(){
 
 }
 const uint8_t seven_seg_digits[] = {
-  0b00111111, // So 0
-  0b00000110, // So 1
-  0b01011011, // So 2
-  0b01001111, // So 3
-  0b01100110, // So 4
-  0b01101101, // So 5
-  0b01111101, // So 6
-  0b00000111, // So 7
-  0b01111111, // So 8
-  0b01101111  // So 9
+  1, // So 0
+  2, // So 1
+  3, // So 2
+  4, // So 3
+  5, // So 4
+  6, // So 5
+  7, // So 6
+  8, // So 7
+  9, // So 8
+  10  // So 9
 };
 void display7SEG(int number) {
   if(number < 0 || number > 9) return; // Kiem tra so hop le
